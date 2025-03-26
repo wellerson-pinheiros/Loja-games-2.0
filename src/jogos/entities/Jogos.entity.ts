@@ -2,8 +2,7 @@ import { IsNotEmpty, isNotEmpty } from "class-validator";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name:'tb_jogos'})
-
-export class Jogos {
+export class JogosEntity {
     @PrimaryGeneratedColumn()
     id: number;
 

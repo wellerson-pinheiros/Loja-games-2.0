@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { JogosEntity } from './jogos/entities/Jogos.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -14,7 +15,7 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_DATABASE,
-      entities: [],
+      entities: [JogosEntity],
       synchronize: true,
     }),
   ],
