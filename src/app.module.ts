@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { JogosEntity } from './jogos/entities/Jogos.entity';
+import { JogosModule } from './jogos/Jogos.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -18,6 +19,7 @@ import { JogosEntity } from './jogos/entities/Jogos.entity';
       entities: [JogosEntity],
       synchronize: true,
     }),
+    JogosModule,
   ],
   controllers: [],
   providers: [],
