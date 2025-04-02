@@ -4,6 +4,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { JogosEntity } from './jogos/entities/Jogos.entity';
 import { JogosModule } from './jogos/Jogos.module';
+
+import { CategoriaEntity } from './categorias/entities/Categoria.enitity';
+import { CategoriaModule } from './categorias/categoria.module';
+
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -16,10 +21,11 @@ import { JogosModule } from './jogos/Jogos.module';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_DATABASE,
-      entities: [JogosEntity],
+      entities: [JogosEntity,CategoriaEntity],
       synchronize: true,
     }),
     JogosModule,
+    CategoriaModule
   ],
   controllers: [],
   providers: [],
