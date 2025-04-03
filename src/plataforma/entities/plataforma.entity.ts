@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity({name:"tb_plataforma"})
 export class PlataformaEntity{
     @PrimaryGeneratedColumn()
     id: number;

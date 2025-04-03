@@ -7,6 +7,8 @@ import { JogosModule } from './jogos/Jogos.module';
 
 import { CategoriaEntity } from './categorias/entities/Categoria.enitity';
 import { CategoriaModule } from './categorias/categoria.module';
+import { PlataformaModule } from './plataforma/plataforma.module';
+import { PlataformaEntity } from './plataforma/entities/plataforma.entity';
 
 
 @Module({
@@ -21,11 +23,12 @@ import { CategoriaModule } from './categorias/categoria.module';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_DATABASE,
-      entities: [JogosEntity,CategoriaEntity],
+      entities: [JogosEntity,CategoriaEntity,PlataformaEntity],
       synchronize: true,
     }),
     JogosModule,
-    CategoriaModule
+    CategoriaModule,
+    PlataformaModule
   ],
   controllers: [],
   providers: [],
