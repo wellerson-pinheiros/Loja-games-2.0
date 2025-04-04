@@ -5,7 +5,7 @@ export class PlataformaEntity{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({length: 255})
     nome_plataforma: string;
 
     @Column({type: 'text', nullable: true})

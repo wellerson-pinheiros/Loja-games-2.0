@@ -7,7 +7,7 @@ export class CategoriaEntity{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({length: 255})
     nomeCategoria: string
 
     @Column({ type: 'text', nullable:true})
