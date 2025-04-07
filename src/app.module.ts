@@ -11,6 +11,8 @@ import { PlataformaModule } from './plataforma/plataforma.module';
 import { PlataformaEntity } from './plataforma/entities/plataforma.entity';
 import { UsuarioEntity } from './usuario/entities/usuario.entity';
 import { UsuarioModule } from './usuario/usuario.module';
+import { PedidoModule } from './pedido/pedido.module';
+import { PedidosEntity } from './pedido/entities/pedido.entity';
 
 
 @Module({
@@ -25,13 +27,14 @@ import { UsuarioModule } from './usuario/usuario.module';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_DATABASE,
-      entities: [JogosEntity,CategoriaEntity,PlataformaEntity,UsuarioEntity],
+      entities: [JogosEntity,CategoriaEntity,PlataformaEntity,UsuarioEntity,PedidosEntity],
       synchronize: true,
     }),
     JogosModule,
     CategoriaModule,
     PlataformaModule,
-    UsuarioModule
+    UsuarioModule,
+    PedidoModule
   ],
   controllers: [],
   providers: [],
