@@ -1,5 +1,6 @@
 import { IsNotEmpty, isNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { ItensPedidoEntity } from "src/itenspedido/entities/itens.entitie";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name:'tb_jogostwozero'})
 export class JogosEntity {
@@ -22,4 +23,7 @@ export class JogosEntity {
      
     @Column({type: "date", nullable: true})
     dataLançamento: Date
+
+    @OneToMany(() => ItensPedidoEntity, (itemPedidos) => itemPedidos.jogo)
+    itensPedido: ItensPedidoEntity[];
 }

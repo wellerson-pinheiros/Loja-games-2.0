@@ -13,7 +13,11 @@ export class JogosService {
 
   // função que retorna todos os jogos cadastrados no banco de dados
   async fyndAll(): Promise<JogosEntity[]> {
-    return await this.jogosRepository.find();
+    return await this.jogosRepository.find({
+      relations:{
+        itensPedido: true
+    },
+    });
   }
 
   async findById(id: number): Promise<JogosEntity> {
@@ -21,6 +25,9 @@ export class JogosService {
       where: {
         id,
       },
+      relations:{
+        itensPedido: true
+    },
     });
     if (!jogo)
       throw new HttpException('Jogo não encontrado', HttpStatus.NOT_FOUND);
@@ -32,6 +39,9 @@ export class JogosService {
   async findByNomeJogo(nomeJogo: string): Promise<JogosEntity[]> {
     const jogoBuscadoPorNome = await this.jogosRepository.find({
       where: { nomeJogo: ILike(`%${nomeJogo}%`) },
+      relations:{
+        itensPedido: true
+    },
     });
     if (jogoBuscadoPorNome.length === 0)
       throw new HttpException('Jogo não encontrado', HttpStatus.NOT_FOUND);

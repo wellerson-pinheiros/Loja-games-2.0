@@ -7,7 +7,7 @@ import { DeleteResult, ILike, Repository } from 'typeorm';
 export class PlataformaService {
   constructor(
     @InjectRepository(PlataformaEntity)
-    private plataformaRepository: Repository<PlataformaEntity>,
+    private plataformaRepository: Repository<PlataformaEntity>
   ) {}
 
   async findAll(): Promise<PlataformaEntity[]> {

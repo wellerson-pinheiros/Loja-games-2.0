@@ -13,6 +13,8 @@ import { UsuarioEntity } from './usuario/entities/usuario.entity';
 import { UsuarioModule } from './usuario/usuario.module';
 import { PedidoModule } from './pedido/pedido.module';
 import { PedidosEntity } from './pedido/entities/pedido.entity';
+import { ItensModule } from './itenspedido/itens.module';
+import { ItensPedidoEntity } from './itenspedido/entities/itens.entitie';
 
 
 @Module({
@@ -27,14 +29,15 @@ import { PedidosEntity } from './pedido/entities/pedido.entity';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_DATABASE,
-      entities: [JogosEntity,CategoriaEntity,PlataformaEntity,UsuarioEntity,PedidosEntity],
+      entities: [JogosEntity,CategoriaEntity,PlataformaEntity,UsuarioEntity,PedidosEntity,ItensPedidoEntity],
       synchronize: true,
     }),
     JogosModule,
     CategoriaModule,
     PlataformaModule,
     UsuarioModule,
-    PedidoModule
+    PedidoModule,
+    ItensModule
   ],
   controllers: [],
   providers: [],
