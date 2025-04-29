@@ -16,7 +16,8 @@ export class ItensService {
   async findAll(): Promise<ItensPedidoEntity[]> {
     return await this.itensPedidoRepository.find({
         relations: {
-            jogo: true
+            jogo: true,
+            pedido: true
         },
     });
   }
@@ -27,7 +28,8 @@ export class ItensService {
         id,
       },
       relations: {
-        jogo: true
+        jogo: true,
+        pedido: true,
     }
     });
     if (!itenBuscadoPeloId) {

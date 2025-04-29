@@ -5,10 +5,13 @@ import {
   
   Generated,
   
+  OneToMany,
+  
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { StatusPedido } from '../enums/statutusdopedido.enum';
-import { v4 as uuidv4 } from 'uuid';
+
+import { ItensPedidoEntity } from '../../itenspedido/entities/itens.entitie';
 
 
 @Entity('name: tb_pedidos')
@@ -34,6 +37,10 @@ export class PedidosEntity {
     default: StatusPedido.PENDENTE // <- esse é o status padrão ao criar o pedido
   })
   status: StatusPedido;
+
+  @OneToMany(() => ItensPedidoEntity, item => item.pedido)
+  itens: ItensPedidoEntity[];
+
 }
 
 

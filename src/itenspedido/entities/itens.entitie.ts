@@ -1,4 +1,5 @@
-import { JogosEntity } from 'src/jogos/entities/Jogos.entity';
+import { JogosEntity } from '../../jogos/entities/Jogos.entity';
+import { PedidosEntity } from '../../pedido/entities/pedido.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'tb_itens_pedido' })
@@ -16,5 +17,8 @@ export class ItensPedidoEntity {
   @ManyToOne(() => JogosEntity, (jogo) => jogo.itensPedido, {
     onDelete: "CASCADE"
   })
-  jogo:JogosEntity 
+  jogo:JogosEntity; 
+
+  @ManyToOne(() => PedidosEntity, pedido => pedido.itens)
+  pedido: PedidosEntity;
 }

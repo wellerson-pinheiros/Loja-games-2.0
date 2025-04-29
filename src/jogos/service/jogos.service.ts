@@ -3,19 +3,25 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { DeleteResult, ILike, Repository } from 'typeorm';
 import { JogosEntity } from '../entities/Jogos.entity';
+import { CategoriaService } from 'src/categorias/service/Categoria.service';
+import { PlataformaService } from 'src/plataforma/service/plataforma.service';
 
 @Injectable()
 export class JogosService {
   constructor(
     @InjectRepository(JogosEntity)
     private jogosRepository: Repository<JogosEntity>,
+    private categoriaService: CategoriaService,
+    private  plataformaService: PlataformaService
   ) {}
 
   // função que retorna todos os jogos cadastrados no banco de dados
   async fyndAll(): Promise<JogosEntity[]> {
     return await this.jogosRepository.find({
       relations:{
-        itensPedido: true
+        
+        categoria: true,
+        plataforma:true
     },
     });
   }
@@ -26,7 +32,9 @@ export class JogosService {
         id,
       },
       relations:{
-        itensPedido: true
+        
+        categoria: true,
+        plataforma: true
     },
     });
     if (!jogo)
@@ -40,7 +48,9 @@ export class JogosService {
     const jogoBuscadoPorNome = await this.jogosRepository.find({
       where: { nomeJogo: ILike(`%${nomeJogo}%`) },
       relations:{
-        itensPedido: true
+       
+        categoria:true,
+        plataforma:true
     },
     });
     if (jogoBuscadoPorNome.length === 0)
@@ -49,27 +59,31 @@ export class JogosService {
     return jogoBuscadoPorNome;
   }
 
-  //async findByCategoria(categoriaJogo: string): Promise<JogosEntity[]>{
-  //const jogosBuscaCategoria = await this.jogosRepository.find({
-
-  //where:{
-  // categoriaJogo,
-  //},
-  // })
-  // }
-
   // método que buscara todos os jogos pela sua categoria
-  /*async fyndByPlataforma (plataformaJogo: string): Promise<JogosEntity[]> {
+  async findByCategoriaId(categoriaId: number): Promise<JogosEntity[]> {
+    return this.jogosRepository.find({
+      where: {
+        categoria: { id: categoriaId }
+      },
+      relations: {
+        categoria: true,
+        plataforma: true
+      }
+    });
+  }
+
+  
+  async fyndByPlataforma (plataformaJogo: number): Promise<JogosEntity[]> {
     const jogosBuscadoPorPLataforma = await this.jogosRepository.find({
         where:{
-            plataformaJogo
+            plataforma: {id: plataformaJogo}
         }
     });
-    if (!jogosBuscadoPorPLataforma)
+    if (jogosBuscadoPorPLataforma.length === 0)
         throw new HttpException('Jogo não encontrado', HttpStatus.NOT_FOUND);
   
       return jogosBuscadoPorPLataforma;
-}*/
+}
 
   // atualizar um dado do jogo essa ação sera possivel só por usuarios admin!
 
@@ -77,13 +91,19 @@ export class JogosService {
     if(!jogos.id){
       throw new HttpException('Jogo não encontrado', HttpStatus.NOT_FOUND);
     }
+    
+    //validação para saber se o jogo tem um categoria e uma plataforma salva, estando correto salva no banco de dados.
     await this.findById(jogos.id);
+    await this.findByCategoriaId(jogos.categoria.id)
+    await this.fyndByPlataforma(jogos.plataforma.id)
     return await this.jogosRepository.save(jogos);
   }
 
   // criar um jogo no banco de dados
   async criarJogo(jogos: JogosEntity): Promise<JogosEntity> {
-    
+    //validação ao criar um jogo se tem uma plataforma e uma categoria
+    await this.findByCategoriaId(jogos.categoria.id)
+    await this.fyndByPlataforma(jogos.plataforma.id)
     return await this.jogosRepository.save(jogos);
   }
 

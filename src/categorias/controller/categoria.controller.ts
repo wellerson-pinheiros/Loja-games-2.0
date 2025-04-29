@@ -46,5 +46,6 @@ export class CategoriaController {
     deleteCategoria(@Param('id', ParseIntPipe) id: number ) {
         return this.categoriaService.deleteCategoria(id)
     }
+    
 }   
 

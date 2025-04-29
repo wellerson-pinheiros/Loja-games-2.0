@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { JogosEntity } from "../../jogos/entities/Jogos.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name:'tb_categoria'})
 
@@ -12,4 +13,8 @@ export class CategoriaEntity{
 
     @Column({ type: 'text', nullable:true})
     descricaoCategoria: string
+
+
+    @OneToMany(() => JogosEntity, (jogo) => jogo.categoria)
+    jogos: JogosEntity[];
 }

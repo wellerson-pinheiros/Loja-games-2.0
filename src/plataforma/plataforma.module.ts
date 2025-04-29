@@ -8,6 +8,6 @@ import { PlataformaController } from "./controller/plataforma.controller";
     imports: [TypeOrmModule.forFeature([PlataformaEntity])],
     controllers: [PlataformaController],
     providers: [PlataformaService],
-    exports: []
+    exports: [PlataformaService]
 })
 export class PlataformaModule{}

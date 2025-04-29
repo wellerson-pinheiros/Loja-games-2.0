@@ -12,7 +12,11 @@ export class PedidoService {
   ) {}
 
   async fyndAll(): Promise<PedidosEntity[]> {
-    return await this.pedidosRepository.find();
+    return await this.pedidosRepository.find({
+      relations: {
+        itens: true
+      }
+    });
   }
 
   async findById(id: number): Promise<PedidosEntity> {
@@ -20,6 +24,9 @@ export class PedidoService {
       where: {
         id,
       },
+      relations: {
+        itens: true
+      }
     });
     if (!pedido)
       throw new HttpException(' Pedido não encontrado', HttpStatus.NOT_FOUND);
@@ -30,6 +37,9 @@ export class PedidoService {
   async findByNumeroPedido(numeropedido: string): Promise<PedidosEntity[]> {
     const pedidoBuscado = await this.pedidosRepository.find({
       where: { numeroPedido: ILike(`%${numeropedido}%`) },
+      relations: {
+        itens: true
+      },
     });
     if (pedidoBuscado.length === 0)
       throw new HttpException('Pedido não encontrado', HttpStatus.NOT_FOUND);

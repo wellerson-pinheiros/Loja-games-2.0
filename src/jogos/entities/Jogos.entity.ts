@@ -1,6 +1,8 @@
-import { IsNotEmpty, isNotEmpty } from "class-validator";
-import { ItensPedidoEntity } from "src/itenspedido/entities/itens.entitie";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { IsNotEmpty } from "class-validator";
+import { CategoriaEntity } from "../../categorias/entities/Categoria.enitity";
+import { ItensPedidoEntity } from "../../itenspedido/entities/itens.entitie";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { PlataformaEntity } from "src/plataforma/entities/plataforma.entity";
 
 @Entity({name:'tb_jogostwozero'})
 export class JogosEntity {
@@ -26,4 +28,14 @@ export class JogosEntity {
 
     @OneToMany(() => ItensPedidoEntity, (itemPedidos) => itemPedidos.jogo)
     itensPedido: ItensPedidoEntity[];
-}
+
+    @ManyToOne(() => CategoriaEntity, (categoria) => categoria.jogos, {
+        onDelete: 'CASCADE' // ou CASCADE, dependendo do comportamento desejado
+      })
+      categoria: CategoriaEntity;
+
+      @ManyToOne(() => PlataformaEntity, (plataforma) => plataforma.jogos, {
+        onDelete: 'CASCADE'
+      })
+      plataforma: PlataformaEntity;
+    }

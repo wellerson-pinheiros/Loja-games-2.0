@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { JogosEntity } from "src/jogos/entities/Jogos.entity";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name:"tb_plataforma"})
 export class PlataformaEntity{
@@ -13,4 +14,9 @@ export class PlataformaEntity{
 
     @Column({nullable: true})
     foto_Plataforma: string;
-}
+
+    @OneToMany(() => JogosEntity, jogo => jogo.plataforma, {
+        onDelete: 'CASCADE'
+      })
+      jogos: JogosEntity[];
+    }

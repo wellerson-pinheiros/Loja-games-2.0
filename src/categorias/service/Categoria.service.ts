@@ -11,13 +11,20 @@ export class CategoriaService {
   ) {}
 
   async findAll(): Promise<CategoriaEntity[]> {
-    return await this.categoriaRepository.find();
+    return await this.categoriaRepository.find({
+      relations: {
+        jogos: true
+      },
+    });
   }
 
   async findById(id: number): Promise<CategoriaEntity> {
     const categoriaBuscada = await this.categoriaRepository.findOne({
       where: {
         id,
+      },
+      relations: {
+        jogos: true
       },
     });
     if (!categoriaBuscada)
@@ -29,6 +36,9 @@ export class CategoriaService {
     const categiraBuscadaPorNome = await this.categoriaRepository.find({
       where: {
         nomeCategoria: ILike(`%${nomeCategoria}%`),
+      },
+      relations: {
+        jogos: true
       },
     });
     if (categiraBuscadaPorNome.length === 0)

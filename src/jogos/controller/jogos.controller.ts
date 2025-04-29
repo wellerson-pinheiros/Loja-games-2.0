@@ -49,5 +49,12 @@ export class JogosController {
     deleteJogos(@Param('id', ParseIntPipe) id: number ) {
         return this.jogosService.deleteJogos(id)
     }
+
+    // jogo filtrado por categoria 
+    @Get('/categoria/:id')
+    @HttpCode(HttpStatus.OK)
+    findByCategoria(@Param('id', ParseIntPipe) id: number): Promise<JogosEntity[]> {
+        return this.jogosService.findByCategoriaId(id);
+}
 }   
 
