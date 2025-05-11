@@ -15,12 +15,14 @@ import { PedidoModule } from './pedido/pedido.module';
 import { PedidosEntity } from './pedido/entities/pedido.entity';
 import { ItensModule } from './itenspedido/itens.module';
 import { ItensPedidoEntity } from './itenspedido/entities/itens.entitie';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // configuração pro .env ser acessado globalmente
+       envFilePath: '.env'
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -37,7 +39,8 @@ import { ItensPedidoEntity } from './itenspedido/entities/itens.entitie';
     PlataformaModule,
     UsuarioModule,
     PedidoModule,
-    ItensModule
+    ItensModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],

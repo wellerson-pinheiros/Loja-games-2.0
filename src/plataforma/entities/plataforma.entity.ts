@@ -12,7 +12,7 @@ export class PlataformaEntity{
     @Column({type: 'text', nullable: true})
     descricao_plataforma: string;
 
-    @Column({nullable: true})
+    @Column({length: 5000,nullable: true})
     foto_Plataforma: string;
 
     @OneToMany(() => JogosEntity, jogo => jogo.plataforma, {

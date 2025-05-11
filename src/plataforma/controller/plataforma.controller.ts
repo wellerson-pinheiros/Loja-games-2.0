@@ -1,7 +1,9 @@
-import { Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Put, Body, Post, Delete } from "@nestjs/common";
+import { Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Put, Body, Post, Delete, UseGuards } from "@nestjs/common";
 import { PlataformaEntity } from "../entities/plataforma.entity";
 import { PlataformaService } from "../service/plataforma.service";
+import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 
+@UseGuards(JwtAuthGuard)
 @Controller("/plataforma")
 
 export class PlataformaController {

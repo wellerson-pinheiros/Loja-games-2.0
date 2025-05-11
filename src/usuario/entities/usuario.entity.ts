@@ -27,6 +27,10 @@ export class UsuarioEntity {
   @Column()
   senha: string;
 
+  
+  @Column({length: 5000, nullable: true }) 
+  foto: string;
+
   // Armazena apenas a data (ano, mês e dia) da criação da conta
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   data_criacao_conta: Date;
@@ -37,5 +41,5 @@ export class UsuarioEntity {
     default: () => 'CURRENT_TIMESTAMP',
     onUpdate: 'CURRENT_TIMESTAMP',
   })
-  data_ultimo_logo: Date;
+  data_ultimo_login: Date;
 }
