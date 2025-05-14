@@ -14,9 +14,12 @@ import {
 import { ItensService } from '../service/itens.service';
 import { ItensPedidoEntity } from '../entities/itens.entitie';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiTags("itens")
 @UseGuards(JwtAuthGuard)
 @Controller('/itens')
+@ApiBearerAuth()
 export class ItensPedidoController {
   constructor(private readonly itensService: ItensService) {}
 

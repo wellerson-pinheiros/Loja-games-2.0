@@ -2,9 +2,11 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { JogosService } from "../service/jogos.service";
 import { JogosEntity } from "../entities/Jogos.entity";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 
-
+@ApiTags("jogos")
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller("/jogos")
 

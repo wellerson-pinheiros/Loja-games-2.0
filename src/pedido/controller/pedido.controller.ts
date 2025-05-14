@@ -2,9 +2,12 @@ import { Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Put, Body, 
 import { PedidosEntity } from "../entities/pedido.entity";
 import { PedidoService } from "../service/pedido.service";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
+@ApiTags("pedidos")
 @UseGuards(JwtAuthGuard)
 @Controller("/pedidos")
+@ApiBearerAuth()
 
 export class PedidosController {
     constructor(

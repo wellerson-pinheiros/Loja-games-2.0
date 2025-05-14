@@ -2,9 +2,12 @@ import { Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Put, Body, 
 import { PlataformaEntity } from "../entities/plataforma.entity";
 import { PlataformaService } from "../service/plataforma.service";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
+@ApiTags("Plataforma")
 @UseGuards(JwtAuthGuard)
 @Controller("/plataforma")
+@ApiBearerAuth()
 
 export class PlataformaController {
     constructor(

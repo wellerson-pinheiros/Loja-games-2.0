@@ -16,6 +16,7 @@ import { PedidosEntity } from './pedido/entities/pedido.entity';
 import { ItensModule } from './itenspedido/itens.module';
 import { ItensPedidoEntity } from './itenspedido/entities/itens.entitie';
 import { AuthModule } from './auth/auth.module';
+import { AppController } from './app.controller';
 
 
 @Module({
@@ -42,7 +43,7 @@ import { AuthModule } from './auth/auth.module';
     ItensModule,
     AuthModule
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}
