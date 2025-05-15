@@ -49,7 +49,7 @@ export class UsuarioController {
     }
 
 
-    //desabilitado porque usuario não pode deletar sua conta após criada
+    //desabilitado porque usuario não pode deletar sua conta após criada só adiministradores poderam deletar conta
     // @Delete("/:id")
     // @HttpCode(HttpStatus.NO_CONTENT)
     // deleteUsuario(@Param('id', ParseIntPipe) id: number ) {
