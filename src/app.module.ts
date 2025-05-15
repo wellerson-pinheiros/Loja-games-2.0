@@ -17,6 +17,8 @@ import { ItensModule } from './itenspedido/itens.module';
 import { ItensPedidoEntity } from './itenspedido/entities/itens.entitie';
 import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
+import { ProdService } from './data/services/prod.service';
+import { DevService } from './data/services/dev.service';
 
 
 @Module({
@@ -25,16 +27,11 @@ import { AppController } from './app.controller';
       isGlobal: true, // configuração pro .env ser acessado globalmente
        envFilePath: '.env'
     }),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT || '3306', 10),
-      username: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_DATABASE,
-      entities: [JogosEntity,CategoriaEntity,PlataformaEntity,UsuarioEntity,PedidosEntity,ItensPedidoEntity],
-      synchronize: true,
-    }),
+   ConfigModule.forRoot(),
+TypeOrmModule.forRootAsync({
+	useClass: DevService,
+    imports: [ConfigModule],
+}),
     JogosModule,
     CategoriaModule,
     PlataformaModule,
