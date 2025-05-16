@@ -27,7 +27,7 @@ import { DevService } from './data/services/dev.service';
       isGlobal: true, // configuração pro .env ser acessado globalmente
        envFilePath: '.env'
     }),
-   ConfigModule.forRoot(),
+  
 TypeOrmModule.forRootAsync({
 	useClass: ProdService,
     imports: [ConfigModule],
