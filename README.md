@@ -47,7 +47,7 @@ API desenvolvida com NestJS para gerenciar uma loja de games, incluindo funciona
 - Integração entre entidades e autenticação
 
 - ## 📸 Imagens do Projeto
-- ![Swagger](https://ik.imagekit.io/50n5k5wmb/insominia.PNG](https://ik.imagekit.io/50n5k5wmb/swagger.PNG?updatedAt=1747430474016)
+- ![Swagger](https://ik.imagekit.io/50n5k5wmb/swagger.PNG?updatedAt=1747430474016)
 
 
 ## 📌 Implementações Futuras
