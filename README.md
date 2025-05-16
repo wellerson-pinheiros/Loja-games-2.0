@@ -14,7 +14,7 @@ API desenvolvida com NestJS para gerenciar uma loja de games, incluindo funciona
 - **.env (Configurações)**
 
 - ### 🔷 Diagrama do Banco de Dados (UML)
-![Diagrama UML]([./docs/uml-diagrama.png](https://ik.imagekit.io/50n5k5wmb/Diagrama%20ER%20com%20entidades%20coloridas%20(nota%C3%A7%C3%A3o%20UML)%20(1).png))
+![UML](https://ik.imagekit.io/50n5k5wmb/Diagrama%20ER%20com%20entidades%20coloridas%20(nota%C3%A7%C3%A3o%20UML)%20(1).png?updatedAt=1747430418834)
 
 
 ## 📦 Funcionalidades
@@ -47,7 +47,7 @@ API desenvolvida com NestJS para gerenciar uma loja de games, incluindo funciona
 - Integração entre entidades e autenticação
 
 - ## 📸 Imagens do Projeto
-- ![Swagger]([https://ik.imagekit.io/50n5k5wmb/insominia.PNG](https://ik.imagekit.io/50n5k5wmb/swagger.PNG))
+- ![Swagger]([https://ik.imagekit.io/50n5k5wmb/insominia.PNG](https://ik.imagekit.io/50n5k5wmb/swagger.PNG?updatedAt=1747430474016))
 
 
 ## 📌 Implementações Futuras
